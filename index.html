@@ -16,8 +16,12 @@
 
 		deffered.then(function(){
 		    console.log("then....", [].slice.call(arguments));
+		    return 2;
 		});
 
+		deffered.then(function(value){
+		    console.log(value);
+		})
 
 	</script>
 </head>

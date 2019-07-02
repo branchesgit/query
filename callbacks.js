@@ -34,7 +34,6 @@ Query.Callbacks = function (options) {
         fire = function () {
 
             locked = options.once;
-
             fired = firing = true;
 
             for (; queue.length; firingIndex = -1) {
