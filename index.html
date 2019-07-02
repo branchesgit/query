@@ -3,8 +3,24 @@
 <head>
 	<title></title>
 	<script type="text/javascript" src="./core.js"></script>
+	<script type="text/javascript" src="./callbacks.js"></script>
+	<script type="text/javascript" src="./deffered.js"></script>
+	<script type="text/javascript">
+		var deffered = Query.Deffered(function(deferred){
+		    console.log("init deffered");
+
+		    setTimeout(function(){
+		        deffered.resolve(1);
+			}, 1000);
+		});
+
+		deffered.then(function(){
+		    console.log("then....", [].slice.call(arguments));
+		});
+
+
+	</script>
 </head>
 <body>
-
 </body>
 </html>
