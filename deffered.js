@@ -7,7 +7,6 @@ Query.extend({
         ];
 
         var state = "pending",
-
             promise = {
                 state: function () {
                     return state;
@@ -28,7 +27,7 @@ Query.extend({
                             var fn = Query.isFunction(fns[_]) && fns[_];
 
                             // 将回调推进去到可执行函数集合里面去；
-                            deffered[tuple[1]](function(){
+                            deffered[tuple[1]](function(){ 
                                 var returned = fn && fn.apply(this, arguments);
 
                                 if (returned && Query.isFunction(returned.promise)) {
