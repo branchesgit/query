@@ -37,7 +37,42 @@
                 }
                 
             }
-        }
+
+            // 
+            if (!this.cache[unlock]) {
+                this.cache[unlock] = {};
+            }
+
+            return unlock;
+        },
+        
+        set: function(owner, data, value) {
+            var prop, 
+                unlock = this.key(owner),
+                cache = this.cache[unlock];
+
+            if (typeof data === "string") {
+                cache[data] = value;
+            
+            } else {
+                if (Q.isEmptyObject(cache)) {
+                    Q.extend(cahce, data);
+                } else {
+                    for (prop in data) {
+                        cache[prop] = data[prop];
+                    }
+                }
+            }
+
+            return cache;
+        },
+
+        get: function(owner, key) {
+            var cache = this.cache[this.key(owner)];
+            return key === undefined ? cache : cache[key];
+        },
+
+        
     };
 
     Query.Data = Data;
